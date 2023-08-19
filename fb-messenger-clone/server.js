@@ -6,39 +6,31 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-app.use(express.static('public'));
+let users = {};
 
 io.on('connection', (socket) => {
     console.log('User connected');
-    socket.on('chat message', (msg) => {
-        io.emit('chat message', msg);
-    });
-    socket.on('disconnect', () => {
-        console.log('User disconnected');
-    });
-});
-
-let users = [];
-
-io.on('connection', (socket) => {
-    // ... previous code
 
     socket.on('user joined', (username) => {
-        if(!users.includes(username)) {
-            users.push(username);
-            io.emit('user list', users);
-        }
+        socket.username = username;
+        users[socket.id] = username;
+        io.emit('user list', Object.values(users));
+    });
+
+    socket.on('chat message', (data) => {
+        io.emit('chat message', data);
     });
 
     socket.on('disconnect', () => {
-        users = users.filter(u => u !== socket.username);
-        io.emit('user list', users);
+        delete users[socket.id];
+        io.emit('user list', Object.values(users));
         console.log('User disconnected');
     });
 });
+
+app.use(express.static('public'));
 
 const PORT = 3000;
 server.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
-
