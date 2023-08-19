@@ -18,6 +18,25 @@ io.on('connection', (socket) => {
     });
 });
 
+let users = [];
+
+io.on('connection', (socket) => {
+    // ... previous code
+
+    socket.on('user joined', (username) => {
+        if(!users.includes(username)) {
+            users.push(username);
+            io.emit('user list', users);
+        }
+    });
+
+    socket.on('disconnect', () => {
+        users = users.filter(u => u !== socket.username);
+        io.emit('user list', users);
+        console.log('User disconnected');
+    });
+});
+
 const PORT = 3000;
 server.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
