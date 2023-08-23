@@ -14,7 +14,7 @@ document.getElementById('send').onclick = function() {
 };
 
 socket.on('chat message', function(data) {
-    console.log("scripts.js data from socket.on(chat message)", data)
+    //console.log("scripts.js data from socket.on(chat message)", data)
     if(data.user !== username) {
         appendMessage(data, 'received');
     }
@@ -29,7 +29,6 @@ const EMOJI_SEARCH_REPLACE = {
     react: '⚛️',
 }; 
 
-
 function emoji_search_and_replace(message_string){
     /*
         Strips special characters but I want to keep the special characters in the output just not during the conversion. so
@@ -38,49 +37,23 @@ function emoji_search_and_replace(message_string){
 
     */
     message_string = message_string.replace(/[^a-zA-Z0-9 ]/g, '');
-
-    /* 
-    I want to make this case insensitive. 
-    Right now it is case insensitive but I want to keep the case output how it was. 
-    Meaning --> 
-        expected    Hey How are you? --> 👋 How are you? 
-        current     Hey How are you? --> 👋 how are you
-    */
-    let message_array = message_string.split(' '); 
-
-    /*
-        Make this cleaner and better. 
-    */
-    for (const [index, value] of Object.entries(message_array)){
-        if(value.toLowerCase() == 'congratulations'){
-            message_array[index] = EMOJI_SEARCH_REPLACE['congratulations']; 
+   let message_array = message_string.split(' '); 
+    const result = message_array.map((word) => {
+        const lowerCaseWord = word.toLowerCase();
+        if (EMOJI_SEARCH_REPLACE.hasOwnProperty(lowerCaseWord)) {
+            return EMOJI_SEARCH_REPLACE[lowerCaseWord]; 
         }
-        else if(value.toLowerCase() == 'woah'){
-            message_array[index] = EMOJI_SEARCH_REPLACE['woah']; 
-        }
-        else if(value.toLowerCase() == 'hey'){
-            message_array[index] = EMOJI_SEARCH_REPLACE['hey']; 
-        }
-        else if(value.toLowerCase() == 'lol'){
-            message_array[index] = EMOJI_SEARCH_REPLACE['lol']; 
-        }
-        else if(value.toLowerCase() == 'like'){
-            message_array[index] = EMOJI_SEARCH_REPLACE['like']; 
-        }
-        else{
-            continue; 
-        }
-    }; 
-   return message_array.join(' '); 
+        return word; 
+    });
+    
+    return result.join(' '); 
 }; 
 
 function appendMessage(data, type) {
     const messages = document.getElementById('messages');
     const message = document.createElement('div');
     message.className = `message ${type}`;
-    console.log('data.content before emoji function', data.content); 
     data.content = emoji_search_and_replace(data.content); 
-    console.log('data.content after emoji function', data.content); 
     message.textContent = type === 'received' ? `${data.user}: ${data.content}` : data.content;
     messages.appendChild(message);
 }; 
