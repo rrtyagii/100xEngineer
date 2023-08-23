@@ -46,25 +46,25 @@ function emoji_search_and_replace(message_string){
         expected    Hey How are you? --> 👋 How are you? 
         current     Hey How are you? --> 👋 how are you
     */
-    let message_array = message_string.toLowerCase().split(' '); 
+    let message_array = message_string.split(' '); 
 
     /*
         Make this cleaner and better. 
     */
     for (const [index, value] of Object.entries(message_array)){
-        if(value == 'congratulations'){
+        if(value.toLowerCase() == 'congratulations'){
             message_array[index] = EMOJI_SEARCH_REPLACE['congratulations']; 
         }
-        else if(value == 'woah'){
+        else if(value.toLowerCase() == 'woah'){
             message_array[index] = EMOJI_SEARCH_REPLACE['woah']; 
         }
-        else if(value == 'hey'){
+        else if(value.toLowerCase() == 'hey'){
             message_array[index] = EMOJI_SEARCH_REPLACE['hey']; 
         }
-        else if(value == 'lol'){
+        else if(value.toLowerCase() == 'lol'){
             message_array[index] = EMOJI_SEARCH_REPLACE['lol']; 
         }
-        else if(value == 'like'){
+        else if(value.toLowerCase() == 'like'){
             message_array[index] = EMOJI_SEARCH_REPLACE['like']; 
         }
         else{
