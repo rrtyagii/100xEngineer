@@ -5,6 +5,7 @@ socket.emit('user joined', username);
 
 const EMOJI_SEARCH_REPLACE = {
     congratulations: '🎉',
+    congratulation: '🎉',
     woah : '😯',
     hey: '👋',
     lol : '😂',
