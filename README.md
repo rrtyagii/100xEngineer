@@ -7,7 +7,7 @@ I just copied what Swanand did on one of their videos. I just used chatGPT to pr
 
 # Assignment 1
 - Emoji Search and Replace [✅]
-- Slash Commands (In progress)
+- Slash Commands (✅)
 
 # Emoji Seach
 congratulations: 🎉
