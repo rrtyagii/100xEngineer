@@ -29,6 +29,7 @@ const EMOJI_SEARCH_REPLACE = {
     react: '⚛️',
 }; 
 
+
 function emoji_search_and_replace(message_string){
     /*
         Strips special characters but I want to keep the special characters in the output just not during the conversion. so
@@ -36,8 +37,9 @@ function emoji_search_and_replace(message_string){
         Hey, how are you? !-- 👋 how are you
 
     */
-    message_string = message_string.replace(/[^a-zA-Z0-9 ]/g, '');
+   message_string = message_string.replace(/[^a-zA-Z0-9 ]/g, '');
    let message_array = message_string.split(' '); 
+   console.log(message_array); 
     const result = message_array.map((word) => {
         const lowerCaseWord = word.toLowerCase();
         if (EMOJI_SEARCH_REPLACE.hasOwnProperty(lowerCaseWord)) {
@@ -49,11 +51,44 @@ function emoji_search_and_replace(message_string){
     return result.join(' '); 
 }; 
 
+
+function emojiSearchAndReplace_character(message_string){
+    let result = ''; 
+    let word = ''; 
+    let string_len = message_string.length; 
+
+    for(let i =0; i<string_len; i++){
+        const current_char = message_string[i]; 
+
+        if (current_char.match(/[a-zA-Z0-9]/)){
+            word += current_char; 
+        } else{
+            let lower_case_word = word.toLowerCase(); 
+            if (EMOJI_SEARCH_REPLACE.hasOwnProperty( lower_case_word )){
+                result += EMOJI_SEARCH_REPLACE[lower_case_word]; 
+            } else { 
+                result += word; 
+            }
+            result += current_char; 
+            word = ''; 
+        }
+    }
+    
+    if (word) {
+        if (EMOJI_SEARCH_REPLACE.hasOwnProperty(word.toLowerCase())) {
+            result += EMOJI_SEARCH_REPLACE[word.toLowerCase()];
+        } else {
+            result += word;
+        }
+    }
+    return result; 
+}
+
 function appendMessage(data, type) {
     const messages = document.getElementById('messages');
     const message = document.createElement('div');
     message.className = `message ${type}`;
-    data.content = emoji_search_and_replace(data.content); 
+    data.content = emojiSearchAndReplace_character(data.content); 
     message.textContent = type === 'received' ? `${data.user}: ${data.content}` : data.content;
     messages.appendChild(message);
 }; 

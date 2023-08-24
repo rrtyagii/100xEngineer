@@ -14,4 +14,7 @@ Lol : 😂
 like: 🤍
 react: ⚛️
 
-Working on emoji search and slash commands. 
+
+# Assignment 1
+- Emoji Search and Replace [✅]
+- Slash Commands (In progress)
