@@ -36,6 +36,7 @@ function emoji_search_and_replace(message_string){
 
 //Looked this up on chatGpt... Couldn't figure out how to manage the punctuations / special characters in my message. 
 function emojiSearchAndReplace_character(message_string){
+    //console.log("TypeOf", typeof(message_string)); 
     let result = ''; 
     let word = ''; 
     let string_len = message_string.length; 
@@ -67,24 +68,24 @@ function emojiSearchAndReplace_character(message_string){
     return result; 
 }
 
-const SLASH_COMMANDS = {
-    "/help" : "Show this message", 
-    "/random" : "Print a random number", 
-    "/clear": "Clear the chat"
-}; 
+// const SLASH_COMMANDS = {
+//     "/help" : "Show this message", 
+//     "/random" : "Print a random number", 
+//     "/clear": "Clear the chat"
+// }; 
 
-function slash_commands_operation(message_string){
-    let result; 
-    if(message_string === "/help"){
-       alert("Available commands:\n/help - Show this message\n/random - Print a random number\n/clear - Clear the chat"); 
-    } else if (message_string === "/random"){
-        result = `Here's your random number: ${Math.random()}`; 
-    } else if (message_string === "/clear"){
-        const messages = document.getElementById('messages');
-        messages.innerHTML=''; 
-    }
+// function slash_commands_operation(message_string){
+//     let result; 
+//     if(message_string === "/help"){
+//        alert("Available commands:\n/help - Show this message\n/random - Print a random number\n/clear - Clear the chat"); 
+//     } else if (message_string === "/random"){
+//         result = `Here's your random number: ${Math.random()}`; 
+//     } else if (message_string === "/clear"){
+//         const messages = document.getElementById('messages');
+//         messages.innerHTML=''; 
+//     }
 
-}; 
+// }; 
 
 function appendMessage(data, type) {
     const messages = document.getElementById('messages');
@@ -100,10 +101,28 @@ document.getElementById('send').onclick = function() {
     const input = document.getElementById('message_input');
     const messageContent = input.value;
     const data = { user: username, content: messageContent };
-    appendMessage(data, 'sent');
-    socket.emit('chat message', data);
+
+    if (data.content === '/help'){
+        alert("Available commands:\n/help - Show this message\n/random - Print a random number\n/clear - Clear the chat"); 
+    } else if (data.content === '/clear'){
+        const messages = document.getElementById('messages');
+        messages.innerHTML=''; 
+    } else if (data.content === '/random'){
+        let result = `Here's your random number: ${Math.random()}`;
+        
+        //just visible to user. 
+        const messages = document.getElementById('messages'); 
+        const message = document.createElement('div');
+        message.className = "message visible only to you"; 
+        message.textContent = `${result}`; 
+        messages.appendChild(message);
+    } else{
+        appendMessage(data, 'sent');
+        socket.emit('chat message', data);
+    }
     input.value = '';
 };
+
 
 socket.on('chat message', function(data) {
     //console.log("scripts.js data from socket.on(chat message)", data)
