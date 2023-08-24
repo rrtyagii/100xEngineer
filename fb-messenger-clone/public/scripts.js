@@ -3,23 +3,6 @@ let username = prompt('Enter your name:');
 
 socket.emit('user joined', username);
 
-document.getElementById('send').onclick = function() {
-    const input = document.getElementById('m');
-    const messageContent = input.value;
-    const data = { user: username, content: messageContent };
-
-    appendMessage(data, 'sent');
-    socket.emit('chat message', data);
-    input.value = '';
-};
-
-socket.on('chat message', function(data) {
-    //console.log("scripts.js data from socket.on(chat message)", data)
-    if(data.user !== username) {
-        appendMessage(data, 'received');
-    }
-});
-
 const EMOJI_SEARCH_REPLACE = {
     congratulations: '🎉',
     woah : '😯',
@@ -27,8 +10,7 @@ const EMOJI_SEARCH_REPLACE = {
     lol : '😂',
     like: '🤍',
     react: '⚛️',
-}; 
-
+};  
 
 function emoji_search_and_replace(message_string){
     /*
@@ -51,7 +33,7 @@ function emoji_search_and_replace(message_string){
     return result.join(' '); 
 }; 
 
-
+//Looked this up on chatGpt... Couldn't figure out how to manage the punctuations / special characters in my message. 
 function emojiSearchAndReplace_character(message_string){
     let result = ''; 
     let word = ''; 
@@ -84,14 +66,51 @@ function emojiSearchAndReplace_character(message_string){
     return result; 
 }
 
+const SLASH_COMMANDS = {
+    "/help" : "Show this message", 
+    "/random" : "Print a random number", 
+    "/clear": "Clear the chat"
+}; 
+
+function slash_commands_operation(message_string){
+    let result; 
+    if(message_string === "/help"){
+       alert("Available commands:\n/help - Show this message\n/random - Print a random number\n/clear - Clear the chat"); 
+    } else if (message_string === "/random"){
+        result = `Here's your random number: ${Math.random()}`; 
+    } else if (message_string === "/clear"){
+        const messages = document.getElementById('messages');
+        messages.innerHTML=''; 
+    }
+
+}; 
+
 function appendMessage(data, type) {
     const messages = document.getElementById('messages');
     const message = document.createElement('div');
     message.className = `message ${type}`;
     data.content = emojiSearchAndReplace_character(data.content); 
+    //slash_commands_operation(data.content); 
     message.textContent = type === 'received' ? `${data.user}: ${data.content}` : data.content;
     messages.appendChild(message);
 }; 
+
+document.getElementById('send').onclick = function() {
+    const input = document.getElementById('message_input');
+    const messageContent = input.value;
+    const data = { user: username, content: messageContent };
+    appendMessage(data, 'sent');
+    socket.emit('chat message', data);
+    input.value = '';
+};
+
+socket.on('chat message', function(data) {
+    //console.log("scripts.js data from socket.on(chat message)", data)
+    if(data.user !== username) {
+        appendMessage(data, 'received');
+    }
+});
+
 
 socket.on('user list', function(userList) {
     const usersDiv = document.getElementById('users');
