@@ -5,6 +5,14 @@
 
 
 ### Entities
+
+#### USER
+#### REVIEW
+#### READING PROGRESS
+#### COMMENTS
+#### AUTHOR
+
+
 ### Relationships
 ### Constraints
 ### Actions

@@ -1,10 +1,15 @@
 # Domain modeling
 
-## [Book Page 1](https://www.goodreads.com/book/show/228665.The_Eye_of_the_World)
-## [Book Page 2](https://www.goodreads.com/book/show/25744928-deep-work)
+## Screens for reference
+1. [Book Page 1](https://www.goodreads.com/book/show/228665.The_Eye_of_the_World)
+2. [Book Page 2](https://www.goodreads.com/book/show/25744928-deep-work)
+3. [Book Review Page 1](https://www.goodreads.com/review/show/1777455910)
+4. [Book Review Page 2](https://www.goodreads.com/review/show/2376175112)
+5. [Author Page 1](https://www.goodreads.com/author/show/147891.Cal_Newport)
+6. [Author Page 2](https://www.goodreads.com/author/show/221559.Jeff_Kinney)
+
 
 ### ENTITIES:
-
 #### BOOK
     - book cover                                                     
     - Name
@@ -95,11 +100,14 @@
     - Published
     - Publisher
 
-#### RECOMMENDATION (Readers also enjoyed)
-    - BOOK
-    - AUTHOR
-    - average RATING
-    - Rating count
+#### RECOMMENDATION
+    - User
+    - recommendation_generation_timestamp
+    - user shelves
+    - user rated books
+    - authors user follow
+    - user followed / liked genres
+    - context (daily generated recommendation or Similar Books after rating a book or author)
 
 #### USER REVIEW
     - user profile picture
@@ -177,43 +185,47 @@
 
 
 ### RELATIONSHIPS
-
-- BOOK <> AUTHOR : MANY TO MANY
-- BOOK <> EDITION ; 1 TO MANY
-- BOOK <> SERIES : MANY TO 1
-- BOOK <> REVIEW : 1 TO MANY
-- BOOK <> GENRE : MANY TO MANY
-- BOOK <> RATING : 1 TO MANY
-- BOOK <> EDITION : 1 TO MANY
-- USER <> RATING : 1 TO 1 (a user can only give one rating to a book at a time)
-- USER <> REVIEW : 1 TO 1 (a user can only give one rating to a book at a time)
-- REVIEW <> COMMENT : 1 TO MANY
-- USER <> BOOK: MANY TO MANY
-- USER <> AUTHOR: MANY TO MANY (for following authors)
-- USER <> USER: MANY TO MANY (for friendships)
-- SERIES <> AUTHOR: MANY TO 1
-- AWARD <> AUTHOR: MANY TO MANY (awards can also be given to authors)
-- USER <> QUOTES: MANY TO MANY 
-- USER <> USER SHELF: 1 TO MANY (a user can have multiple shelves)
-- USER SHELF <> BOOK: MANY TO MANY (a shelf can have multiple books, a book can be on multiple shelves)
-- USER <> USER READING PROGRESS : 1 TO MANY
-- USER <> USER LIST : 1 TO MANY
-- COMMUNITY REVIEW <> COMMENT REPLY : 1 TO MANY
-- USER <> FRIENDS : 1 TO MANY
+    - BOOK <> AUTHOR : MANY TO MANY
+    - BOOK <> EDITION ; 1 TO MANY
+    - BOOK <> SERIES : MANY TO 1
+    - BOOK <> REVIEW : 1 TO MANY
+    - BOOK <> GENRE : MANY TO MANY
+    - BOOK <> RATING : 1 TO MANY
+    - BOOK <> EDITION : 1 TO MANY
+    - USER <> RATING : 1 TO 1 (a user can only give one rating to a book at a time)
+    - USER <> REVIEW : 1 TO 1 (a user can only give one rating to a book at a time)
+    - REVIEW <> COMMENT : 1 TO MANY
+    - USER <> BOOK: MANY TO MANY
+    - USER <> AUTHOR: MANY TO MANY (for following authors)
+    - USER <> USER: MANY TO MANY (for friendships)
+    - SERIES <> AUTHOR: MANY TO 1
+    - AWARD <> AUTHOR: MANY TO MANY (awards can also be given to authors)
+    - USER <> QUOTES: MANY TO MANY 
+    - USER <> USER SHELF: 1 TO MANY (a user can have multiple shelves)
+    - USER SHELF <> BOOK: MANY TO MANY (a shelf can have multiple books, a book can be on multiple shelves)
+    - USER <> USER READING PROGRESS : 1 TO MANY
+    - USER <> USER LIST : 1 TO MANY
+    - COMMUNITY REVIEW <> COMMENT REPLY : 1 TO MANY
+    - USER <> FRIENDS : 1 TO MANY
+    - USER <> RECOMMENDATION: 1 TO MANY
+    - BOOK <> RECOMMENDATION: MANY TO MANY
+    - USER_SHELF <> RECOMMENDATION: MANY TO MANY
+    - RATING <> RECOMMENDATION: MANY TO MANY
 
 
 ### CONSTRAINTS
-- Uniqueness: 
+
+- __Uniqueness:__
     - BOOK should have unique isbn for each EDITION
     - user-id, award-id, author-id, genre-id, series-id, should all be unique
 
-- Required: 
+- __Required:__ 
     - BOOK should at least have an author, genre, description, name, edition information
     - REVIEW and RATING must be associated with a USER and a BOOK
     - USER-SHELF must be associated with USER and have at least one BOOK
     - USER-LIST must be associated with USER and have at least one BOOK
 
-- Domain: 
+- __Domain:__
     - RATING must be from (1-5)
     - Price should be non-negative
     - FRIEND Status must be (pending, accepted, friends)
@@ -226,20 +238,19 @@
 - if a COMMUNITY REVIEW is deleted, all the COMMENT REPLY must be deleted as well
 
 
-
 ### ACTIONS
-1. a USER is currently reading a BOOK
-2.  a USER wants to read a BOOK
-3.  a USER have read a BOOK
-4.  a USER adds a BOOK to his USER-LIST
-5.  a USER sends another USER a FREIND-request
-6.  a USER FOLLOWs an AUTHOR
-7.  a USER FOLLOWs an USER
-8.  an AUTHOR has written a book
-9.  a USER posts a REVIEW
-10.  a USER likes a COMMUNITY REVIEW
-11.  a USER posts a COMMENT to COMMUNITY REVIEW
-12.  a USER rates a BOOK
-13.  an AUTHOR adds a BOOK to a SERIES
-14.  a USER recommends a BOOK to their FRIEND
-15. a USER add tags to their REVIEW  
+    1. a USER is currently reading a BOOK
+    2.  a USER wants to read a BOOK
+    3.  a USER have read a BOOK
+    4.  a USER adds a BOOK to his USER-LIST
+    5.  a USER sends another USER a FREIND-request
+    6.  a USER FOLLOWs an AUTHOR
+    7.  a USER FOLLOWs an USER
+    8.  an AUTHOR has written a book
+    9.  a USER posts a REVIEW
+    10.  a USER likes a COMMUNITY REVIEW
+    11.  a USER posts a COMMENT to COMMUNITY REVIEW
+    12.  a USER rates a BOOK
+    13.  an AUTHOR adds a BOOK to a SERIES
+    14.  a USER recommends a BOOK to their FRIEND
+    15. a USER add tags to their REVIEW  
