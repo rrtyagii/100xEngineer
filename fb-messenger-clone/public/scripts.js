@@ -74,18 +74,8 @@ function emojiSearchAndReplace_character(message_string){
 //     "/clear": "Clear the chat"
 // }; 
 
-// function slash_commands_operation(message_string){
-//     let result; 
-//     if(message_string === "/help"){
-//        alert("Available commands:\n/help - Show this message\n/random - Print a random number\n/clear - Clear the chat"); 
-//     } else if (message_string === "/random"){
-//         result = `Here's your random number: ${Math.random()}`; 
-//     } else if (message_string === "/clear"){
-//         const messages = document.getElementById('messages');
-//         messages.innerHTML=''; 
-//     }
-
-// }; 
+function slash_commands_operation(data, input_value){
+}; 
 
 function appendMessage(data, type) {
     const messages = document.getElementById('messages');
