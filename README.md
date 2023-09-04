@@ -1,13 +1,31 @@
 # 100xEngineer
+Repo for 100x Engineers
 
-Repo for 100x Engineers. 
+This branch covers the pre-code assignment for the cohort. This assignment was to get familiarize myself with git and the world of git.
 
-This branch covers the code for class 0. 
+I just copied what Swanand did on one of their videos. I just used chatGPT to prompt the code to sort of build a clone of facebook messenger. 
 
-In this class we wrote a basic `FizzBuzz` program. 
+# Assignment 1 - Module 0
+- Emoji Search and Replace [✅]
+- Slash Commands (✅)
 
-Basically, 
-```If the number is divisible by 3 -> fizz. If the number is divisible by 5 --> buzz. If the number is divisible by both --> fizzbuzz```
+## Emoji Seach
+congratulations: 🎉
+woah : 😯
+hey: 👋
+lol : 😂
+like: 🤍
+react: ⚛️
 
-~~~~~~~~
-ignore this. This commit is just to raise a PR. 
+## Slash Commands
+- /help = (Show this message) shows a popup on screen listing the available commands. 
+- /random = (Print a random number)
+- /clear = (clears the chat)
+
+
+## Optional Assignments
+Only for those who completed first two
+- Advanced Slash Commands: Support the following two commands:
+    1. `/rem <name> <value>` Set a value and by the given name. e.g. `/rem answer 42` or `/rem city Atlantis`. This value can then be recalled by `/rem <name>` e.g. `/rem answer` will post `42` and `/rem city` will post `Atlantis`.
+    2. `/calc 3+5` will post the result of the calculator.
+- Display a live count of Online Users, which updates in real time. Open a new tab and see the count change. Or close a tab and see the count decrease.

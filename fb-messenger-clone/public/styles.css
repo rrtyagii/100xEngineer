@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f2f5;
+    margin: 0;
+    padding: 0;
+}
+
+#chatContainer {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+#messages {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.message {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #0078ff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0066cc;
+}
+
+
+#chatContainer {
+    display: flex;
+    /* ... other styles ... */
+}
+
+#leftPanel {
+    width: 30%;
+    border-right: 1px solid #eee;
+}
+
+#rightPanel {
+    width: 70%;
+    padding-left: 20px;
+}
+
+.sent {
+    align-self: flex-end;
+    background-color: #0078ff;
+    color: #fff;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.received {
+    align-self: flex-start;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.user {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
