@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rishabh Tyagi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <header>
-        <h1>Rishabh Tyagi</h1>
-        <nav>
-            <ul>
-                <li><a href="mailto:rishabhtyagi.666@gmail.com" rel="noopener noreferrer">Email</a></li>
-                <li><a href="https://www.linkedin.com/in/rtyagi1" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-                <li><a href="https://github.com/rrtyagii" target="_blank" rel="noopener noreferrer">Github</a></li>
+        <h1 class="heading">Rishabh Tyagi</h1>
+        <nav class="navbar-container">
+            <ul class="nav-bar">
+                <li><a href="mailto:rishabhtyagi.666@gmail.com" rel="noopener noreferrer"> <i class="fas fa-envelope"></i> Email</a></li>
+                <li><a href="https://www.linkedin.com/in/rtyagi1" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <li><a href="https://github.com/rrtyagii" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>Github</a></li>
             </ul>
-            <hr>
         </nav>
+        <hr>
     </header>
 
     <main>
@@ -24,9 +26,17 @@
             <h2>Professional Experience</h2>
 
             <section>
-                <h3>W.W Grainger Inc</h3>
-                <p>Software Engineer (Jul 2023 - Present)</p>
-                <ul>
+                <ul class="list-side-by-side">
+                    <li><h3>W.W Grainger Inc</h3></li>
+                    <li><h3>Chicago, IL</h3></li>
+                </ul>
+
+                <ul class="list-side-by-side">
+                    <li>Software Engineer</li>
+                    <li>Jul 2023 - Present</li>
+                </ul>
+                
+                <ul class="list-content">
                     <li>
                         Working on the Gcom-Login/Registration team
                     </li>
@@ -34,9 +44,17 @@
             </section>
 
             <section>
-                <h3>Starpay Inc</h3>
-                <p>Co-founder CTO (Aug 2022 - Mar 2023)</p>
-                <ul>
+                <ul class="list-side-by-side">
+                    <li><h3>Starpay Inc</h3></li>
+                    <li><h3>Chicago, IL</h3></li>
+                </ul>
+
+                <ul class="list-side-by-side">
+                    <li>Co-founder / CTO</li>
+                    <li>Aug 2022 - Mar 2023</li>
+                </ul>
+
+                <ul class="list-content">
                     <li>
                         Architected and deployed a payment settlement network leveraging WhatsApp, Stellar-Blockchain, AWS, and Python, empowering unbanked communities in Latin America with a rapid, streamlined, and secure financial solution.
                     </li>
@@ -46,9 +64,17 @@
             </section>
 
             <section>
-                <h3>Deloitte LLP</h3>
-                <p>Software Engineering Intern (Jun 2022 - Aug 2022)</p>
-                <ul>
+                <ul class="list-side-by-side">
+                    <li><h3>Deloitte LLP</h3></li>
+                    <li><h3>Chicago, IL</h3></li>
+                </ul>
+
+                <ul class="list-side-by-side">
+                    <li>Software Engineering Intern</li>
+                    <li>Jun 2022 - Aug 2022</li>
+                </ul>
+
+                <ul class="list-content">
                     <li>Engineered middleware for ML testing engine connecting frontend & backend application interactable & won US$50,000.</li>
                     <li>Wrote and tested 9 API endpoints leveraging Django Rest improving user interactivity & operated on user provided dataset.</li>
                     <li>Virtualized servers & configured automation scripts for 4 APIs using Docker improving the deployment process.</li>
@@ -56,9 +82,17 @@
             </section>
 
             <section>
-                <h3>Ooma, Inc</h3>
-                <p>Software Engineering Intern (Aug 2021 - May 2022)</p>
-                <ul>
+                <ul class="list-side-by-side">
+                    <li><h3>Ooma, Inc</h3></li>
+                    <li><h3>(Remote) Chicago, IL</h3></li>
+                </ul>
+
+                <ul class="list-side-by-side">
+                    <li>Software Engineering Intern</li>
+                    <li>Aug 2021 - May 2022</li>
+                </ul>
+
+                <ul class="list-content">
                     <li>Developed a bot to securely generate 10 automatic audit reports for each financial quarter leveraging JIRA APIs.</li>
                     <li>Developed a service status dashboard, with React, Django & Agile, delivering customers an avenue to check statuses, service uptime, reliability, scheduled service maintenance for 36 features across the world.</li>
                     <li>Owned JIRA migration from the legacy ticketing system enhancing collaboration among 5 teams & enhanced
@@ -67,9 +101,17 @@
             </section>
 
             <section>
-                <h3>7 Qubes</h3>
-                <p>Software Engineering Intern (Feb 2021 - Jul 2021)</p>
-                <ul>
+                <ul class="list-side-by-side">
+                    <li><h3>7 Qubes</h3></li>
+                    <li><h3>(Remote) Chicago, IL</h3></li>
+                </ul>
+
+                <ul class="list-side-by-side">
+                    <li>Software Engineering Intern</li>
+                    <li>Feb 2021 - Jul 2021</li>
+                </ul>
+
+                <ul class="list-content">
                     <li>Integrated Ship Engine, an API allowing clients to compare shipping costs across 30 carriers & access 17% discounted rates.</li>
                     <li>Built UI with React/Redux for a DocuSign clone saving customers US$150,000 annually.</li>
                     <li>Performed bottom-up analysis & market research to understand the market for Business Management Platforms with $2.35B, tailored for small businesses.</li>
@@ -79,18 +121,18 @@
 
         <hr>
         
-        <article class="skills">
+        <article>
             <h2>Skills</h2>
-            <ul>
-                <li>Python (Django & Flask)</li>
-                <li>AWS Lambda</li>
-                <li>AWS API Gateway</li>
-                <li>Dynamo DB</li>
-                <li>Java (Android Dev)</li>
-                <li>Javascript (React.js & Node.js)</li>
-                <li>REST APIs</li>
-                <li>Unix / Linux</li>
-            </ul>
+            <section class="skills">
+                <img class="python" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png" alt="python logo" width="100" height="100">
+                <img class="aws-lambda" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Amazon_Lambda_architecture_logo.svg/200px-Amazon_Lambda_architecture_logo.svg.png" alt="logo of AWS Lambda" width="100" height="100">
+                <img class="api-gateway" src="https://s3-us-west-2.amazonaws.com/assertible/blog/aws-api-gateway-icon.png" alt="logo of AWS API Gateway" width="100" height="100">
+                <img class="dynamo-db" src="https://upload.wikimedia.org/wikipedia/commons/f/fd/DynamoDB.png" alt="logo of AWS Dynamo DB" width="100" height="100">
+                <img class="java" src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Java_programming_language_logo.svg/800px-Java_programming_language_logo.svg.png" alt="logo of java" width="100" height="100">
+                <img class="javascript" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/600px-JavaScript-logo.png?20120221235433" alt="logo of javascript" width="100" height="100">
+                <img class="react" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png" alt="logo of javascript" width="100" height="100">
+                <img class="linux" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Tux.svg/800px-Tux.svg.png" alt="logo of Linux" width="100" height="100">
+            </section>
         </article>
 
         <hr>
@@ -98,12 +140,14 @@
         <article class="education-section">
             <h2>Education</h2>
             <section>
-                <ul>
-                    <li><h3>Illinois Institute of Technology, Chicago, IL</h3></li>
-                    <li><h3>May 2019- May 2023</h3></li>
+                <ul class="list-side-by-side">
+                    <li><h3>Illinois Institute of Technology</h3></li>
+                    <li><h3>Chicago, IL</h3></li>
                 </ul>
-                <ul>
-                    <li><h4>Bachelor's of Science in Computer Science (BS CS)</h4></li>
+
+                <ul class="list-side-by-side list-content">
+                    <li>Bachelor's of Science in Computer Science</li>
+                    <li>May 2019- May 2023</li>
                 </ul>
             </section>
         </article>
@@ -113,24 +157,21 @@
         <article class="leadership-exp">
             <h2>Leadership Experience</h2>
             <section>
-                <h3>Illinois Tech Leadership Academy</h3>
-                <ul>
+                <h3 class="list-side-by-side">Illinois Tech Leadership Academy</h3>
+                <ul class="list-content">
                     <li>Selected as one of 30 recipients of the prestigious IIT Leadership Academy Scholarship, a full-tuition scholarship, awarded to top-performing undergraduates for demonstrated leadership and academic excellence.</li>
                     <li>Designed and executed leadership seminars and retreats at IIT, delivering over 200 hours of comprehensive leadership training to student participants, enhancing campus leadership skills.</li>
                 </ul>
             </section>
 
             <section>
-                <h3>Illinois Tech Office of Advancement</h3>
-                <ul>
+                <h3 class="list-side-by-side">Illinois Tech Office of Advancement</h3>
+                <ul class="list-content">
                     <li>Raised >$50,000 from alumni donors to fund various scholarships for incoming students.</li>
                     <li>Coordinated and executed three successful alumni events, collaborating closely with Illinois Tech Trustees and securing engagements from keynote speakers.</li>
                 </ul>
             </section>
         </article>
-
-        <hr>
-
     </main>
 
     <footer>
