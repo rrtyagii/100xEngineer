@@ -8,9 +8,9 @@
     <!-- <link rel="stylesheet" href="./styles.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-neutral-900 text-white m-4 p-8">
-    <header class="font-sans flex justify-between items-baseline border px-6 py-6 m-4 rounded-lg bg-black">
-        <h1 class="font-sans text-5xl font-bold">Rishabh Tyagi</h1>
+<body class="bg-neutral-900 text-white m-4 px-4 md:px-20 py-9">
+    <header class="font-serif flex justify-between items-baseline border px-6 py-9 m-4 rounded-lg bg-black">
+        <h1 class="text-5xl font-bold">Rishabh Tyagi</h1>
         <nav  class="flex flex-wrap gap-5 text-3xl">
             <a href="mailto:rishabhtyagi.666@gmail.com" rel="noopener noreferrer"> 
                 <i class="fas fa-envelope"></i>
@@ -24,22 +24,22 @@
         </nav>
     </header>
 
-    <main>
+    <main class="font-serif">
         <article class="border px-6 py-6 m-4 rounded-lg bg-black">
-            <h2 class="font-sans text-3xl font-bold mb-4">Professional Experience</h2>
+            <h2 class="text-4xl font-bold mb-4">Professional Experience</h2>
 
             <section class="mb-4">
-                <ul role="list" class="flex justify-between text-xl font-bold">
-                    <li><h3 class="border-dotted border-b-2 border-white">W.W Grainger Inc</h3></li>
-                    <li><h3>Chicago, IL</h3></li>
+                <ul role="list" class="text-2xl font-bold flex sm:flex-col md:flex-row justify-between">
+                    <li><h3 class="border-dotted border-b-2 border-white">W.W <span class="text-red-700">Grainger</span> Inc</h3></li>
+                    <li class="mt-2 sm:mt-0"><h3>Chicago, IL</h3></li>
                 </ul>
 
-                <ul role="list" class="flex justify-between">
-                    <li class="p-2">Software Engineer</li>
-                    <li>Jul 2023 - Present</li>
+                <ul role="list" class="text-xl flex justify-between sm:flex-col md:flex-col">
+                    <li class="p-2 border-b-2 border-dotted border-white">Software Engineer</li>
+                    <li class="mt-2 sm:mt-0">Jul 2023 - Present</li>
                 </ul>
-                
-                <ul role="list" class="p-4 list-decimal m-2">
+
+                <ul role="list" class="font-mono flex flex-col gap-y-5 p-4 list-decimal m-2 list-outside text-lg">
                     <li>
                         Working on the Gcom-Login/Registration team
                     </li>
@@ -47,84 +47,81 @@
             </section>
 
             <section class="mb-4">
-                <ul role="list" class="flex justify-between text-xl font-bold ">
-                    <li><h3 class="border-dotted border-b-2 border-white">Starpay Inc</h3></li>
+                <ul role="list" class="flex justify-between text-2xl font-bold ">
+                    <li><h3 class="border-dotted border-b-2 border-white"> <span class="text-indigo-500">Starpay</span> Inc</h3></li>
                     <li><h3>Chicago, IL</h3></li>
                 </ul>
 
-                <ul role="list" class="flex justify-between">
+                <ul role="list" class="text-xl flex justify-between">
                     <li class="p-2 border-b-2 border-dotted border-white">Co-founder / CTO</li>
                     <li>Aug 2022 - Mar 2023</li>
                 </ul>
 
-                <ul role="list" class="p-4 list-decimal m-2">
-                    <li>
-                        Architected and deployed a payment settlement network leveraging WhatsApp, Stellar-Blockchain, AWS, and Python, empowering unbanked communities in Latin America with a rapid, streamlined, and secure financial solution.
-                    </li>
-                    <li>Forged strategic alliances with market leaders such as Circle and ComplyCube to integrate cutting-edge stable coin minting and AML/KYC security measures, significantly enhancing our product suite.</li>
-                    <li>Secured $15,000 in funding through the Grainger Computing Innovation Prize at Illinois Tech, underscoring the project's innovation and potential impact.</li>
+                <ul role="list" class="font-mono flex flex-col gap-y-5 p-4 list-decimal m-2 list-outside text-lg">
+                    <li>Won $15,000 from the Grainger Prize at Illinois Tech for project innovation.</li>
+                    <li>Developed a payment network using WhatsApp, Stellar-Blockchain, and AWS for unbanked Latin Americans.</li>
+                    <li>Partnered with Circle and ComplyCube for advanced stable coin and security features.</li>
                 </ul>
             </section>
 
             <section class="mb-4">
                 <ul role="list" class="flex justify-between text-xl font-bold">
-                    <li><h3 class="border-dotted border-b-2 border-white">Deloitte LLP</h3></li>
+                    <li><h3 class="border-dotted border-b-2 border-white">Deloitte <span class="text-green-400">LLP</span></h3></li>
                     <li><h3>Chicago, IL</h3></li>
                 </ul>
 
-                <ul role="list" class="flex justify-between">
+                <ul role="list" class="text-xl flex justify-between">
                     <li class="p-2 border-b-2 border-dotted border-white">Software Engineering Intern</li>
                     <li>Jun 2022 - Aug 2022</li>
                 </ul>
 
-                <ul role="list" class="p-4 list-decimal m-2">
-                    <li>Engineered middleware for ML testing engine connecting frontend & backend application interactable & won US$50,000.</li>
-                    <li>Wrote and tested 9 API endpoints leveraging Django Rest improving user interactivity & operated on user provided dataset.</li>
-                    <li>Virtualized servers & configured automation scripts for 4 APIs using Docker improving the deployment process.</li>
+                <ul role="list" class="font-mono flex flex-col gap-y-5 p-4 list-decimal m-2 list-outside text-lg">
+                    <li>Developed ML middleware, bridging frontend & backend, and secured US$50,000 prize.</li>
+                    <li>Crafted 9 Django Rest API endpoints enhancing user engagement with datasets.</li>
+                    <li>Streamlined 4 API deployments using Docker automation.</li>
                 </ul>
             </section>
 
             <section class="mb-4">
                 <ul role="list" class="flex justify-between text-xl font-bold">
-                    <li><h3 class="border-dotted border-b-2 border-white">Ooma, Inc</h3></li>
+                    <li><h3 class="border-dotted border-b-2 border-white"> <span class="text-lime-200">Ooma</span>, Inc</h3></li>
                     <li><h3>(Remote) Chicago, IL</h3></li>
                 </ul>
 
-                <ul role="list" class="flex justify-between">
+                <ul role="list" class="text-xl flex justify-between">
                     <li class="p-2 border-b-2 border-dotted border-white">Software Engineering Intern</li>
                     <li>Aug 2021 - May 2022</li>
                 </ul>
 
-                <ul role="list" class="p-4 list-decimal m-2">
-                    <li>Developed a bot to securely generate 10 automatic audit reports for each financial quarter leveraging JIRA APIs.</li>
-                    <li>Developed a service status dashboard, with React, Django & Agile, delivering customers an avenue to check statuses, service uptime, reliability, scheduled service maintenance for 36 features across the world.</li>
-                    <li>Owned JIRA migration from the legacy ticketing system enhancing collaboration among 5 teams & enhanced
-                        efficiency by 35%.</li>
+                <ul role="list" class="font-mono flex flex-col gap-y-5 p-4 list-decimal m-2 list-outside text-lg">
+                    <li>Created a bot using JIRA APIs for quarterly financial audit automation.</li>
+                    <li>Launched a global service status dashboard using React and Django for 36 features.</li>
+                    <li>Led JIRA transition, boosting collaboration across 5 teams and improving efficiency by 35%.</li>                
                 </ul>
             </section>
 
             <section class="mb-2">
                 <ul role="list" class="flex justify-between text-xl font-bold">
-                    <li><h3 class="border-dotted border-b-2 border-white">7 Qubes</h3></li>
+                    <li><h3 class="border-dotted border-b-2 border-white">7 <span class="text-cyan-500">Qubes</span></h3></li>
                     <li><h3>(Remote) Chicago, IL</h3></li>
                 </ul>
 
-                <ul role="list" class="flex justify-between">
+                <ul role="list" class="text-xl flex justify-between">
                     <li class="p-2 border-b-2 border-dotted border-white">Software Engineering Intern</li>
                     <li>Feb 2021 - Jul 2021</li>
                 </ul>
 
-                <ul role="list" class="p-4 list-decimal m-2">
-                    <li>Integrated Ship Engine, an API allowing clients to compare shipping costs across 30 carriers & access 17% discounted rates.</li>
-                    <li>Built UI with React/Redux for a DocuSign clone saving customers US$150,000 annually.</li>
-                    <li>Performed bottom-up analysis & market research to understand the market for Business Management Platforms with $2.35B, tailored for small businesses.</li>
+                <ul role="list" class="font-mono flex flex-col gap-y-5 p-4 list-decimal m-2 list-outside text-lg">
+                    <li>Integrated Ship Engine API, offering clients 17% discounts across 30 carriers.</li>
+                    <li>Developed a DocuSign-like UI with React/Redux, saving clients US$150,000 yearly.</li>
+                    <li>Analyzed the $2.35B market potential for small business management platforms.</li>      
                 </ul>
             </section>
         </article>
 
         <article class="border px-6 py-6 m-4 rounded-lg bg-black">
-            <h2 class="font-sans text-3xl font-bold mb-4">Skills</h2>
-            <section class="flex flex-wrap flex-col">
+            <h2 class="text-3xl font-bold mb-4">Skills</h2>
+            <section class="font-mono flex flex-wrap p-4 list-decimal m-2 list-outside text-lg">
                 <label for="python">Python:</label>
                 <progress class="mb-4 h-2 w-full" id="python" max="100" value="60"></progress>
 
@@ -134,22 +131,31 @@
                 <label for="react">React:</label>
                 <progress class="mb-4 h-2 w-full" id="react" max="100" value="45"></progress>
 
+                <label for="java">Typescript</label>
+                <progress class="mb-4 h-2 w-full" id="java" max="100" value="4=0"></progress>
+
                 <label for="aws-lambda">AWS Lambda:</label>
                 <progress class="mb-4 h-2 w-full" id="aws-lambda" max="100" value="30"></progress>
 
                 <label for="dynamo-db">Dynamo DB</label>
                 <progress class="mb-4 h-2 w-full" id="java" max="100" value="30"></progress>
 
+                <label for="java">Git</label>
+                <progress class="mb-4 h-2 w-full" id="java" max="100" value="60"></progress>
+
                 <label for="java">Java</label>
                 <progress class="mb-4 h-2 w-full" id="java" max="100" value="40"></progress>
+
+                <label for="java">C</label>
+                <progress class="mb-4 h-2 w-full" id="java" max="100" value="30"></progress>
             </section>
         </article>
 
         <article class="border px-6 py-6 m-4 rounded-lg bg-black">
-            <h2 class="font-sans text-3xl font-bold mb-4">Education</h2>
+            <h2 class="text-3xl font-bold mb-4">Education</h2>
             <section class="">
                 <ul role="list" class="flex justify-between text-xl font-bold">
-                    <li><h3 class="p-2">Illinois Institute of Technology</h3></li>
+                    <li><h3 class="p-2 text-red-500">Illinois Institute of Technology</h3></li>
                     <li><h3>Chicago, IL</h3></li>
                 </ul>
 
@@ -158,8 +164,7 @@
                     <li>May 2019- May 2023</li>
                 </ul>
 
-                <p class="px-4 pt-2 text-lg font-bold">Activities:</p>
-                <ul role="list" class="p-4 list-decimal m-2">
+                <ul role="list" class="font-mono flex flex-col gap-y-5 p-4 list-decimal m-2 list-outside text-lg">
                     <li>Al & Lila Self Leadership Academy Scholar</li>
                     <li>Vice President for Academic Affairs in Student Government Association</li>
                     <li>Advancement Ambassador in the Office of Advancement</li>
@@ -168,18 +173,18 @@
         </article>
 
         <article class="border px-6 py-6 m-4 rounded-lg bg-black"> 
-            <h2 class="font-sans text-3xl font-bold mb-4">Leadership Experience</h2>
+            <h2 class="text-3xl font-bold mb-4">Leadership Experience</h2>
             <section>
-                <h3 class="p-2 text-xl font-bold">Illinois Tech Leadership Academy</h3>
-                <ul role="list" class="list-decimal p-4">
+                <h3 class="p-2 text-xl font-bold text-red-600">Illinois Tech Leadership Academy</h3>
+                <ul role="list" class="font-mono flex flex-col gap-y-5 p-4 list-decimal m-2 list-outside text-lg">
                     <li>Selected as one of 30 recipients of the prestigious IIT Leadership Academy Scholarship a full-tuition scholarship, awarded to top-performing undergraduates for demonstrated leadership and academic excellence.</li>
                     <li>Designed and executed leadership seminars and retreats at IIT, delivering over 200 hours of comprehensive leadership training to student participants, enhancing campus leadership skills.</li>
                 </ul>
             </section>
 
             <section>
-                <h3 class="p-2 text-xl font-bold">Illinois Tech Office of Advancement</h3>
-                <ul role="list" class="list-decimal p-4">
+                <h3 class="p-2 text-xl font-bold text-red-600">Illinois Tech Office of Advancement</h3>
+                <ul role="list" class="font-mono flex flex-col gap-y-5 p-4 list-decimal m-2 list-outside text-lg">
                     <li>Selected as one of the 7 Advancement Ambassadors from the undergraduate population </li> 
                     <li>Raised >$50,000 from alumni donors to fund various scholarships for incoming students.</li>
                     <li>Coordinated and executed three successful alumni events, collaborating closely with Illinois Tech Trustees and securing engagements from keynote speakers.</li>
@@ -188,26 +193,26 @@
         </article>
 
         <article class="border px-6 py-6 m-4 rounded-lg bg-black mb-20">
-            <h3 class="font-sans text-3xl font-bold">Contact Me</h3>
+            <h3 class="text-3xl font-bold">Contact Me</h3>
             <form action="#" method="post" class="">
 
-                <section class="flex flex-col w-2/4 px-6 py-6">
+                <section class="flex flex-col md:w-2/4 px-6 py-6">
                     <label class="" for="name-of-person">What's your name?</label>
                     <input class="rounded-lg" type="text" name="person_name" id="name-of-person">
                 </section>
 
-                <section class="flex flex-col w-2/4 px-6 py-6">
+                <section class="flex flex-col md:w-2/4 px-6 py-6">
                     <label for="person_email">And your email?</label>
                     <input class="rounded-lg" type="email" name="person_email" id="email-of-person">
                 </section>
 
-                <section class="flex flex-col w-2/3 px-6 py-6">
+                <section class="flex flex-col md:w-2/4 px-6 py-6">
                     <label for="message-of-person">Yeah, what's your message!</label>
                     <textarea class="rounded-lg" name="person_message" id="message-of-person" cols="30" rows="5"></textarea>
                 </section>
                
                 <section class="px-6 py-6">
-                    <button class="w-1/5 px-8 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm" >Submit</button>
+                    <button class="w-1/5 px-8 py-2 font-semibold text-sm bg-yellow-600 text-white rounded-full shadow-sm" >Submit</button>
                 </section>
             </form>            
         </article>
