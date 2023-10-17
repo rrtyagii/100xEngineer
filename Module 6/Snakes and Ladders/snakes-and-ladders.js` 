@@ -9,4 +9,4 @@ const snakeAndLadders= (playerRed, playerBlue)=> {
     }
 }
 
-module.exports = SnakeAndLadders; 
+module.exports = snakeAndLadders; 
