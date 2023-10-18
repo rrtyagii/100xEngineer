@@ -1,12 +1,101 @@
-const snakeAndLadders= (playerRed, playerBlue)=> {
+const snakeAndLadders= (player_Red, player_Blue)=> {
 
-    const playerRed = playerRed; 
-    const playerBlue = playerBlue
-
+    const red = player_Red; 
+    const blue = player_Blue
+    
+    let currentPlayer = "red"; 
+    
     const nextPlayer = {
-        playerRed: playerBlue, 
-        playerBlue: playerRed,
+        "red" : "blue",
+        "blue" : "red" 
+    };
+
+    let playerPositions = {
+        red : 1, 
+        blue : 1, 
+    };
+    
+    const ladders = {
+        4 : 56, 
+        12 : 50,
+        14 : 55,
+        22 : 58,
+        41 : 79,
+        54 : 88
+    };
+
+    const snakes = {
+        28 : 10, 
+        37 : 3,
+        48 : 16,
+        75 : 32,
+        94 : 71,
+        96 : 42
+    }; 
+    
+    const board = ['onGoing',
+   
+        '',  '',  '',  '🪜',  '',  '',  '',  '',  '',  '',
+
+        '',  '🪜',  '',  '🪜',  '',  '',  '',  '',  '',  '',
+
+        '',  '🪜',  '',  '',  '',  '',  '',  '🐍',  '',  '',
+
+        '',  '',  '',  '',  '',  '',  '🐍',  '',  '',  '',
+
+        '🪜',  '',  '',  '',  '',  '',  '',  '🐍',  '',  '',
+
+        '',  '',  '',  '🪜',  '',  '',  '',  '',  '',  '',
+
+        '',  '',  '',  '',  '',  '',  '',  '',  '',  '',
+
+        '',  '',  '',  '',  '🐍',  '',  '',  '',  '',  '',
+
+        '',  '',  '',  '',  '',  '',  '',  '',  '',  '',
+
+        '',  '',  '',  '🐍',  '',  '🐍',  '',  '',  '', ''
+    ];
+
+    // const rollDie =()=>{
+    //     let maxLimit = 6; 
+    //     let rand = Math.random()*maxLimit; 
+    //     rand = Math.floor(rand) + 1; 
+    //     return (rand); 
+    // }; 
+
+
+    /**
+     * What is a valid move in real life Snakes and Ladder? 
+     * 
+     * Well, the numerical value lies with 1 and 6 ; two players can infact sit on one spot ; so I am assuming currentPosition + move does not go beyond the board i.e 100th spot. 
+     * 
+     */ 
+
+    const isValidMove = (move) =>{
+        let playerCurrentPosition = playerPositions[currentPlayer]; 
+        return ( 1 <=move && move <=6) && (playerCurrentPosition + move < 100); 
+
     }
+
+    /*
+    * If the board is empty at that point, great update the value of player's currentPosition to player's current position + 6
+     * 
+     * If there is a ladder, you take the ladder and go up 
+     *  currentPosition[player] += ladder[currentPos[player]]
+     * 
+     * If there is a snake, you take the snake and go down 
+     */  
+
+    return (player, move) => {
+        if (player !== currentPlayer){
+            return [false, `Not your Turn, current Player is ${currentPlayer}`]
+        }
+
+        if
+    }
+
+
+
 }
 
 module.exports = snakeAndLadders; 

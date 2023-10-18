@@ -1,5 +1,7 @@
 # Snakes and Ladders in Javascript
 
+## SEQUENCE OF EVENTS
+
 - Turn based game.
 
 - 2 players to play the game.
@@ -31,7 +33,8 @@
 
     '81',  '',  '',  '',  '',  '',  '',  '',  '',  '90',
 
-    '91',  '',  '',  '🐍',  '',  '🐍',  '',  '',  '',  '100'
+    '91',  '',  '',  '🐍',  '',  '🐍',  '',  '',  '', '100'
+    
 
 ]
 ```
@@ -194,3 +197,27 @@
     ```
 
 - The winner is whoever reaches the end of the board or spot 100 (or index 100) first. 
+
+- Game continues until there's a winner
+
+### How is a player movings? 
+
+First of all legal moves range from [1,6] (value of the dies). 
+    
+- This means a player can move at minimum 1 place or 6 places from their currentPosition
+
+
+## REQUIREMENTS
+
+* Store players names
+* Roll a die
+* Current player ; next player ; cycle through these player
+* Store the board
+* Store the position of ladders
+* Store the position of each player
+* Game Status
+* Assignment operations
+    1. moving along the board
+    2. reaching a ladder and going up
+    3. reaching a snake and going down
+    4. winning the game
