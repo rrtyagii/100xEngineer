@@ -10,7 +10,7 @@ const snakeAndLadders= (player_Red, player_Blue)=> {
         "blue" : "red" 
     };
 
-    let playerPositions = {
+    let playerCurrentPosition = {
         red : 1, 
         blue : 1, 
     };
@@ -63,7 +63,6 @@ const snakeAndLadders= (player_Red, player_Blue)=> {
     //     return (rand); 
     // }; 
 
-
     /**
      * What is a valid move in real life Snakes and Ladder? 
      * 
@@ -72,8 +71,8 @@ const snakeAndLadders= (player_Red, player_Blue)=> {
      */ 
 
     const isValidMove = (move) =>{
-        let playerCurrentPosition = playerPositions[currentPlayer]; 
-        return ( 1 <=move && move <=6) && (playerCurrentPosition + move < 100); 
+        let playerCurrentPosition = playerCurrentPosition[currentPlayer]; 
+        return ( 1 <=move && move <=6) && (playerCurrentPosition + move <= 100); 
 
     }
 
@@ -91,7 +90,9 @@ const snakeAndLadders= (player_Red, player_Blue)=> {
             return [false, `Not your Turn, current Player is ${currentPlayer}`]
         }
 
-        if
+        if (!isValidMove(move)){
+            return [false, `Invalid move by player ${player}`]; 
+        }
     }
 
 
