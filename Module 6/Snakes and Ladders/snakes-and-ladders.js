@@ -21,15 +21,16 @@ const snakeAndLadders = (player_Red, player_Blue) => {
     96: 42
   };
 
-  const boardString = ['onGoing', '', '', '', '🪜', '', '', '', '', '', '', '', '🪜', '', '🪜', '', '', '', '', '', '', '', '🪜', '', '', '', '', '', '🐍', '', '', '', '', '', '', '', '', '🐍', '', '', '', '🪜', '', '', '', '', '', '', '🐍', '', '', '', '', '', '🪜', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '🐍', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '🐍', '', '🐍', '', '', '', ''];
+  const board = ['onGoing', '', '', '', '🪜', '', '', '', '', '', '', '', '🪜', '', '🪜', '', '', '', '', '', '', '', '🪜', '', '', '', '', '', '🐍', '', '', '', '', '', '', '', '', '🐍', '', '', '', '🪜', '', '', '', '', '', '', '🐍', '', '', '', '', '', '🪜', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '🐍', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '🐍', '', '🐍', '', '', '', ''];
 
-  const board = new Map();
   
-  for (let i = 0; i < boardString.length; i++) {
-      board.set(i, [boardString[i]]);
-  }
+  // const board = new Map();
+  
+  // for (let i = 0; i < boardString.length; i++) {
+  //     board.set(i, [boardString[i]]);
+  // }
 
-  let playersCurrentPosition = {
+  let playerPositionState = {
     red : 1, 
     blue : 1, 
   }
@@ -41,8 +42,8 @@ const snakeAndLadders = (player_Red, player_Blue) => {
      * Well, the numerical value lies with 1 and 6 ; two players can infact sit on one spot ; so I am assuming currentPosition + move does not go beyond the board i.e 100th spot. 
      * 
      */
-    let playerCurrentPosition = playersCurrentPosition[currentPlayer];
-    return (1 <= move && move <= 6) && (playersCurrentPosition + move <= 100);
+    let playerCurrentPosition = playerPositionState[currentPlayer];
+    return (1 <= move && move <= 6) && (playerCurrentPosition + move <= 100);
   }
 
 
@@ -56,14 +57,14 @@ const snakeAndLadders = (player_Red, player_Blue) => {
 
     if(playerNewPosition === 100){
       result = `win-${currentPlayer}`;
-      board.set(0, result); 
+      board[0] = result; 
       return board; 
     }
 
       // how does a player moves? 
       //   * the player enters a legal move, then move along the board.
       //     - this means that we add the legal move to the players' current position
-    let currentPosition = playersCurrentPosition[currentPlayer];
+    let currentPosition = playerPositionState[currentPlayer];
     let playerNewPosition = currentPosition + move; 
     let boardPosition = board.get(playerNewPosition); 
     switch(boardPosition){
