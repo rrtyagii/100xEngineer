@@ -23,7 +23,7 @@ const snakeAndLadders = (player_Red, player_Blue) => {
 
   const board = ['onGoing', '', '', '', '🪜', '', '', '', '', '', '', '', '🪜', '', '🪜', '', '', '', '', '', '', '', '🪜', '', '', '', '', '', '🐍', '', '', '', '', '', '', '', '', '🐍', '', '', '', '🪜', '', '', '', '', '', '', '🐍', '', '', '', '', '', '🪜', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '🐍', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '🐍', '', '🐍', '', '', '', ''];
 
-  
+
   // const board = new Map();
   
   // for (let i = 0; i < boardString.length; i++) {
@@ -48,9 +48,8 @@ const snakeAndLadders = (player_Red, player_Blue) => {
 
 
   const computePlay = (move) => {
+    // returns ongoing, win-red, win-blue, draw; 
     let result = onGoing;
-    
-      // returns ongoing, win-red, win-blue, draw; 
 
       // how is a winner determined? 
       //   Whoever goes to the spot 100 0r index 100 first; 
@@ -64,13 +63,6 @@ const snakeAndLadders = (player_Red, player_Blue) => {
       // how does a player moves? 
       //   * the player enters a legal move, then move along the board.
       //     - this means that we add the legal move to the players' current position
-    let currentPosition = playerPositionState[currentPlayer];
-    let playerNewPosition = currentPosition + move; 
-    let boardPosition = board.get(playerNewPosition); 
-    switch(boardPosition){
-        case "":
-          board.set(playerNewPosition, currentPlayer);
-    }
 
       //   * if the player lands on the index where there is a ladder, 
       //     - we add the ladder's value to the players' current position.
@@ -80,7 +72,18 @@ const snakeAndLadders = (player_Red, player_Blue) => {
 
       //   * Two players can sit on the same spot.
 
-      //   * Once you go to the next spot, I need to pop() from the previous pop
+      const currentPlayerPosition = playerPositionState[currentPlayer]; 
+      const playerPositionAfterMove = currentPlayerPosition + move; 
+
+      switch(board[playerPositionAfterMove]){
+        case "":
+          playerPositionState[currentPlayer] = playerPositionAfterMove; 
+          console.log(`Player ${currentPlayer} moved from ${currentPlayerPosition} to ${playerPositionAfterMove}`); 
+          break; 
+        
+        case "🪜": 
+          let ladderPosition = ladders[playerPositionAfterMove]; 
+      }
 
   }
 
@@ -95,13 +98,4 @@ const snakeAndLadders = (player_Red, player_Blue) => {
   }
 }
 
-//module.exports = snakeAndLadders; 
-
-snakeAndLadders("Red", "Blue");
-
-// const rollDie =()=>{
-//     let maxLimit = 6; 
-//     let rand = Math.random()*maxLimit; 
-//     rand = Math.floor(rand) + 1; 
-//     return (rand); 
-// }; 
+module.exports = snakeAndLadders; 
