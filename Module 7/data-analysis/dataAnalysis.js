@@ -1,9 +1,14 @@
+// Define URLs for getting and posting data
 const GET_URL = "https://one00x-data-analysis.onrender.com/assignment?email=rishabhtyagi.666@gmail.com"; 
 const POST_URL = "https://one00x-data-analysis.onrender.com/assignment"; 
 
+// Constants for retry logic
 const MAX_RETRIES = 5; 
-const INITIAL_DELAY = 1000 //1 sec
+const INITIAL_DELAY = 1000 // In milli-seconds 1 second delay
 
+/**
+ * Fetches the marketing data. In case of HTTP 500 error, retries the request.
+ */
 const getMarketingData = async (url, retries=MAX_RETRIES, initialDelay=INITIAL_DELAY) => {
     try{
         const response = await fetch(url, {
@@ -18,7 +23,7 @@ const getMarketingData = async (url, retries=MAX_RETRIES, initialDelay=INITIAL_D
         }
         
         if(!response.ok){
-            throw new Error(`Invalid Network Call or Request failed with status: ${response.status}`);
+            throw new Error("Invalid Network Call"); 
         }
         
         const assignment_id = response.headers.get('x-assignment-id'); 
@@ -30,27 +35,21 @@ const getMarketingData = async (url, retries=MAX_RETRIES, initialDelay=INITIAL_D
         }; 
 
         return body; 
-    } catch (error) {
-        console.error(`Fetch error: ${error.message}`);
-        if (retries <= 0) {
-            throw new Error("Max retries reached. Request failed.");
-        }
+    } catch (error){
+        console.log(error); 
     }
 }
 
+/**
+ * Sorts a Map by its values in descending order.
+ */
 const sortByValue = (map) => {
     return new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
 }
 
-const splitArray = (input_array)=>{
-    const result = [];
-    input_array.forEach(element => {
-        let temp = element.split("-");
-        result.push(...temp);
-    });
-    return result; 
-}
-
+/**
+ * Populates a Map with array elements as keys and their frequency as values.
+ */
 const populateMapFromArray= (result)=>{
     let map1 = new Map(); 
     result.forEach((element) => {
@@ -63,6 +62,9 @@ const populateMapFromArray= (result)=>{
     return map1; 
 }
 
+/**
+ * Fetches the marketing data, processes it to determine the frequency of jargon terms, and prepares the data to be posted.
+ */
 const fetchingDataAndProcessing = async (GET_URL) =>{
     const response = await getMarketingData(GET_URL);
     const assignment_id = response.assignment_id; 
@@ -82,6 +84,9 @@ const fetchingDataAndProcessing = async (GET_URL) =>{
     return body; 
 }
 
+/**
+ * Fetches the processed marketing data and posts it to the specified URL.
+ */
 const postTo100x = async (GET_URL, POST_URL)=>{
     try{
         const bodyData = await fetchingDataAndProcessing(GET_URL);
@@ -101,4 +106,5 @@ const postTo100x = async (GET_URL, POST_URL)=>{
     }
 };
 
+// Invoke the main function to post the data
 postTo100x(GET_URL, POST_URL); 
