@@ -1,15 +1,24 @@
 const GET_URL = "https://one00x-data-analysis.onrender.com/assignment?email=rishabhtyagi.666@gmail.com"; 
 const POST_URL = "https://one00x-data-analysis.onrender.com/assignment"; 
 
-const getMarketingData = async (url) => {
+const MAX_RETRIES = 5; 
+const INITIAL_DELAY = 1000 //1 sec
+
+const getMarketingData = async (url, retries=MAX_RETRIES, initialDelay=INITIAL_DELAY) => {
     try{
         const response = await fetch(url, {
             method : "GET",
             headers: {"Content-Type": "application/json",},
         }); 
+
+        if (response.status === 500 && retries > 0) {
+            console.log(`Received HTTP 500. Retrying in ${initialDelay}ms...`);
+            await new Promise(res => setTimeout(res, initialDelay));
+            return fetchWithRetry(url, retries - 1, initialDelay * 2);
+        }
         
         if(!response.ok){
-            throw new Error("Invalid Network Call"); 
+            throw new Error(`Invalid Network Call or Request failed with status: ${response.status}`);
         }
         
         const assignment_id = response.headers.get('x-assignment-id'); 
@@ -21,8 +30,11 @@ const getMarketingData = async (url) => {
         }; 
 
         return body; 
-    } catch (error){
-        console.log(error); 
+    } catch (error) {
+        console.error(`Fetch error: ${error.message}`);
+        if (retries <= 0) {
+            throw new Error("Max retries reached. Request failed.");
+        }
     }
 }
 
@@ -66,6 +78,7 @@ const fetchingDataAndProcessing = async (GET_URL) =>{
         "answer" : [...sortedFrequency][1][0],
         "assignment_id" : assignment_id, 
     }; 
+
     return body; 
 }
 
