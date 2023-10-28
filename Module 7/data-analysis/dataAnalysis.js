@@ -1,5 +1,5 @@
 // Define URLs for getting and posting data
-const GET_URL = "https://one00x-data-analysis.onrender.com/assignment?email=rishabhtyagi.666@gmail.com"; 
+const GET_URL = "https://one00x-data-analysis.onrender.com/assignment?email="; 
 const POST_URL = "https://one00x-data-analysis.onrender.com/assignment"; 
 
 // Constants for retry logic
@@ -76,7 +76,6 @@ const fetchingDataAndProcessing = async (GET_URL) =>{
     const sortedFrequency = sortByValue(jargonFrequency); 
 
     const body = {
-        "email" : 'rishabhtyagi.666@gmail.com',
         "answer" : [...sortedFrequency][1][0],
         "assignment_id" : assignment_id, 
     }; 
