@@ -1,0 +1,20 @@
+{
+  "name": "web-crawler",
+  "version": "0.0.1",
+  "description": "Web Crawler in JavaScript. Start with a page, any page. Crawl a total of 100 pages and create a basic search index for words.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "crawl": "node src/crawl.js"
+  },
+  "keywords": [
+    "web-crawler",
+    "API"
+  ],
+  "author": "Swanand Pagnis",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "node-html-parser": "^6.1.10"
+  }
+}
